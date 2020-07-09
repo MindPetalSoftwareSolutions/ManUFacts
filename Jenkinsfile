@@ -1,4 +1,4 @@
-@Library('jenkins-shared-library') _
+@Library('rpa-mod-folders@master') _
 
 pipeline {
     agent any
@@ -16,17 +16,10 @@ pipeline {
                 sonarQubeScan()
             }
         }
-        stage('Build') {
-            steps {
-                script {
-                    pack() 
-                }
-            }
-        }
         stage('Orch Publish') {
             steps {
                 script {
-                    orchPublish("OPQ") 
+                    orchPublish("USCIS-RPA","USCIS-RPA-COE") 
                 }
             }
         }
